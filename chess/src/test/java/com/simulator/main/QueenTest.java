@@ -42,4 +42,40 @@ public class QueenTest {
         assertTrue(expected.containsAll(movements), "All expected movements should be present.");
     }
 	
+	@Test
+    public void testGetMovementsFromLeftUpCorner() {
+        Queen queen = new Queen();
+        List<String> movements = queen.getMovements("B7");
+        List<String> expected = List.of(
+            "B8", // Vertical up
+            "B1", "B2", "B3", "B4", "B5", "B6", // Vertical down
+            "C7", "D7", "E7", "F7", "G7", "H7",// Horizontal right
+            "A7", // Horizontal left
+            "C8", // Diagonal up-right
+            "A6", // Diagonal down-left
+            "C6","D5","E4","F3","G2","H1", // Diagonal down-right
+            "A8"  // Diagonal up-left
+        );
+        assertEquals(expected.size(), movements.size(), "The number of movements should match.");
+        assertTrue(expected.containsAll(movements), "All expected movements should be present.");
+    }
+	
+	@Test
+    public void testGetMovementsFromBottomDownCorner() {
+        Queen queen = new Queen();
+        List<String> movements = queen.getMovements("A1");
+        List<String> expected = List.of(
+        	"A2", "A3", "A4", "A5", "A6", "A7", "A8", // Vertical up
+             // Vertical down
+            "B1", "C1", "D1", "E1", "F1", "G1", "H1",// Horizontal right
+            // Horizontal left
+            "B2", "C3", "D4", "E5", "F6", "G7", "H8" // Diagonal up-right
+            // Diagonal down-left
+            // Diagonal down-right
+            // Diagonal up-left
+        );
+        assertEquals(expected.size(), movements.size(), "The number of movements should match.");
+        assertTrue(expected.containsAll(movements), "All expected movements should be present.");
+    }
+	
 }
