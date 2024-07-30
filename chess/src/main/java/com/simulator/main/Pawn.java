@@ -15,7 +15,7 @@ public class Pawn implements Piece {
 		if (currentRow < 8) {
 			movements.add("" + inputCaseIndependent + (currentRow + 1));
 		}else if (currentRow == 8) {
-			System.out.println("The Pawn will not be able to move forward as the position, " + position + " , is the end of the Chess board game");
+			throw new InvalidMoveException("The Pawn will not be able to move forward as the position, " + position + " , is the end of the Chess board game");
 		}
 		return movements;
 	}

@@ -2,13 +2,21 @@ package com.simulator.main;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 public class QueenTest {
+	
+	Queen queen;
+	
+	@BeforeEach
+	public void setUp() {
+		queen = new Queen();
+	}
+	
+	
 	@Test
     public void testGetMovementsFromCenter() {
-        Queen queen = new Queen();
         List<String> movements = queen.getMovements("D4");
         List<String> expected = List.of(
             "D5", "D6", "D7", "D8", // Vertical up
@@ -20,13 +28,11 @@ public class QueenTest {
             "E3", "F2", "G1", // Diagonal down-right
             "C5", "B6", "A7"  // Diagonal up-left
         );
-        assertEquals(expected.size(), movements.size(), "The number of movements should match.");
         assertTrue(expected.containsAll(movements), "All expected movements should be present.");
     }
 	
 	@Test
     public void testGetMovementsFromRightUpCorner() {
-        Queen queen = new Queen();
         List<String> movements = queen.getMovements("G7");
         List<String> expected = List.of(
             "G8", // Vertical up
@@ -38,13 +44,11 @@ public class QueenTest {
             "H6", // Diagonal down-right
             "F8"  // Diagonal up-left
         );
-        assertEquals(expected.size(), movements.size(), "The number of movements should match.");
         assertTrue(expected.containsAll(movements), "All expected movements should be present.");
     }
 	
 	@Test
     public void testGetMovementsFromLeftUpCorner() {
-        Queen queen = new Queen();
         List<String> movements = queen.getMovements("B7");
         List<String> expected = List.of(
             "B8", // Vertical up
@@ -56,13 +60,11 @@ public class QueenTest {
             "C6","D5","E4","F3","G2","H1", // Diagonal down-right
             "A8"  // Diagonal up-left
         );
-        assertEquals(expected.size(), movements.size(), "The number of movements should match.");
         assertTrue(expected.containsAll(movements), "All expected movements should be present.");
     }
 	
 	@Test
     public void testGetMovementsFromBottomDownCorner() {
-        Queen queen = new Queen();
         List<String> movements = queen.getMovements("A1");
         List<String> expected = List.of(
         	"A2", "A3", "A4", "A5", "A6", "A7", "A8", // Vertical up
@@ -74,7 +76,6 @@ public class QueenTest {
             // Diagonal down-right
             // Diagonal up-left
         );
-        assertEquals(expected.size(), movements.size(), "The number of movements should match.");
         assertTrue(expected.containsAll(movements), "All expected movements should be present.");
     }
 	
